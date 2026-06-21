@@ -14,7 +14,7 @@ int isEmpty(Queue* q)
     return q->head == NULL;
 }
 
-void enqueue(Queue* q, User user) {
+int enqueue(Queue* q, User user) {
     QueueNode* newnode = (QueueNode*)malloc(sizeof(QueueNode));
     if (newnode == NULL) {
         return 1;
@@ -31,22 +31,21 @@ void enqueue(Queue* q, User user) {
     }
 
 }
-void dequeue(Queue* q, User * user) {
-    if (q->head == NULL)
-        return 1;
+User dequeue(Queue *q){
+    User tempuser = { "",0,"" };
     QueueNode* temp = q->head;
-    *user = temp->data;
+    tempuser = temp->data;
     q->head = q->head->next;
     if (q->head == NULL)
         q->tail = NULL;
     free(temp);
-    return 0;
+    return tempuser ;
 
 }
 
 
 static void generate_username(char username[]) {
-    const char chars[] = "abcdefghijklmnopqrstuvwxyz0123456789";
+    char chars[] = "abcdefghijklmnopqrstuvwxyz0123456789";
     for (int i = 0; i < 10; i++) {
         username[i] = chars[rand() % 36];
     }
@@ -55,7 +54,7 @@ static void generate_username(char username[]) {
 
 int addRandomUsers(Queue* q, int count)
 {
-    const char* factions[] =
+    char* factions[] =
     {
         "red",
         "blue",
@@ -70,8 +69,7 @@ int addRandomUsers(Queue* q, int count)
 
         u.level = rand() % 60 + 1;
 
-        strcpy(u.faction,
-            factions[rand() % 3]);
+        strcpy_s(u.faction,sizeof(u.faction),factions[rand() % 3]);
 
         enqueue(q, u);
     }

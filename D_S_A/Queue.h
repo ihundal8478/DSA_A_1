@@ -23,7 +23,7 @@ typedef struct
 
 void initQueue(Queue* q);
 int isEmpty(Queue* q);
-void enqueue(Queue* q, User user);
-void dequeue(Queue* q, User * user);
+int enqueue(Queue* q, User user);
+User dequeue(Queue* q);
 int addRandomUsers(Queue* q, int count);
 #endif
