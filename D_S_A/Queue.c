@@ -13,6 +13,7 @@ int isEmpty(Queue* q)
 {
     return q->head == NULL;
 }
+
 void enqueue(Queue* q, User user) {
     QueueNode* newnode = (QueueNode*)malloc(sizeof(QueueNode));
     if (newnode == NULL) {
@@ -28,5 +29,17 @@ void enqueue(Queue* q, User user) {
         q->tail->next = newnode;
         q->tail = newnode;
     }
+
+}
+void dequeue(Queue* q, User * user) {
+    if (q->head == NULL)
+        return 1;
+    QueueNode* temp = q->head;
+    *user = temp->data;
+    q->head = q->head->next;
+    if (q->head == NULL)
+        q->tail = NULL;
+    free(temp);
+    return 0;
 
 }
