@@ -43,3 +43,12 @@ void dequeue(Queue* q, User * user) {
     return 0;
 
 }
+
+
+static void generate_username(char username[]) {
+    const char chars[] = "abcdefghijklmnopqrstuvwxyz0123456789";
+    for (int i = 0; i < 10; i++) {
+        username[i] = chars[rand() % 36];
+    }
+    username[10] = '\0';
+}
