@@ -52,3 +52,29 @@ static void generate_username(char username[]) {
     }
     username[10] = '\0';
 }
+
+int addRandomUsers(Queue* q, int count)
+{
+    const char* factions[] =
+    {
+        "red",
+        "blue",
+        "green"
+    };
+
+    for (int i = 0; i < count; i++)
+    {
+        User u;
+
+        generate_username(u.username); 
+
+        u.level = rand() % 60 + 1;
+
+        strcpy(u.faction,
+            factions[rand() % 3]);
+
+        enqueue(q, u);
+    }
+
+    return 0;
+}

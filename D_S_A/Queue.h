@@ -24,6 +24,6 @@ typedef struct
 void initQueue(Queue* q);
 int isEmpty(Queue* q);
 void enqueue(Queue* q, User user);
-void dequeue(Queue* q, User user);
+void dequeue(Queue* q, User * user);
 int addRandomUsers(Queue* q, int count);
 #endif
