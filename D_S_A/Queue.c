@@ -8,3 +8,8 @@ void initQueue(Queue* q)
     q->head = NULL;
     q->tail = NULL;
 }
+
+int isEmpty(Queue* q)
+{
+    return q->head == NULL;
+}
